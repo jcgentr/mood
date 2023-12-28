@@ -1,6 +1,10 @@
+import { auth } from '@clerk/nextjs'
 import Link from 'next/link'
 
 export default function Home() {
+  const { userId }: { userId: string | null } = auth()
+  const href = userId ? '/journal' : '/new-user'
+
   return (
     <main className="w-screen h-screen flex justify-center items-center bg-black text-white">
       <div className="w-full max-w-[900px] mx-auto p-10">
@@ -10,7 +14,7 @@ export default function Home() {
           you have to do is be honest.
         </p>
         <div>
-          <Link href={'/journal'}>
+          <Link href={href}>
             <button className="bg-blue-600 px-4 py-2 rounded-lg text-xl hover:opacity-80">
               Get started
             </button>
