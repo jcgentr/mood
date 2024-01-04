@@ -12,6 +12,9 @@ const getEntry = async (id: string) => {
         id,
       },
     },
+    include: {
+      analysis: true,
+    },
   })
 
   return entry

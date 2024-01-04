@@ -1,7 +1,7 @@
 import { auth } from '@clerk/nextjs'
 import Link from 'next/link'
 
-export default function Home() {
+export default function HomePage() {
   const { userId }: { userId: string | null } = auth()
   const href = userId ? '/journal' : '/new-user'
 

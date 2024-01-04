@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.28.1",
@@ -18,15 +19,24 @@
     "dotenv": "^16.3.1",
     "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
+    "langchain": "^0.0.213",
     "mysql2": "^3.6.5",
     "next": "14.0.4",
     "postcss": "8.4.32",
     "react": "18.2.0",
+    "react-autosave": "^0.4.3",
     "react-dom": "18.2.0",
+    "recharts": "^2.10.3",
     "tailwindcss": "3.4.0",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "prisma": "^5.7.1"
+    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/react": "^14.1.2",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "jsdom": "^23.0.1",
+    "prisma": "^5.7.1",
+    "vitest": "^1.1.1"
   }
 }
