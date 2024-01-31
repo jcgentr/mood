@@ -1,12 +1,14 @@
 import { auth } from '@clerk/nextjs'
 import { prisma } from './db'
 import { User } from '@prisma/client'
+import { redirect } from 'next/navigation'
 
 export const getUserByClerkID = async () => {
   const { userId } = auth()
 
   if (!userId) {
-    throw new Error('User ID is null or undefined')
+    console.error('User ID is null or undefined')
+    redirect('/sign-in')
   }
 
   const user = await prisma.user.findUniqueOrThrow({

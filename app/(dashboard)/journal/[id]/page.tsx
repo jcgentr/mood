@@ -20,7 +20,13 @@ const getEntry = async (id: string) => {
   return entry
 }
 
-export default async function EntryPage({ params }: any) {
+interface PageProps {
+  params: {
+    id: string
+  }
+}
+
+export default async function EntryPage({ params }: PageProps) {
   const entry = await getEntry(params.id)
 
   if (!entry) {

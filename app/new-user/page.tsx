@@ -1,22 +1,24 @@
 import { prisma } from '@/utils/db'
 import { currentUser } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
+import { LoadingScreen } from './loading'
 
 const createNewUser = async () => {
   const user = await currentUser()
   console.log(user)
-
+  // this should never happen since Clerk protects this route/page
   if (!user) {
-    throw new Error('No current user found')
+    console.error('No current user found')
+    redirect('/sign-in')
   }
 
-  const match = await prisma.user.findUnique({
+  const dbUser = await prisma.user.findUnique({
     where: {
       clerkId: user.id,
     },
   })
 
-  if (!match) {
+  if (!dbUser) {
     await prisma.user.create({
       data: {
         clerkId: user.id,
@@ -24,12 +26,12 @@ const createNewUser = async () => {
       },
     })
   }
-
+  await new Promise((resolve) => setTimeout(resolve, 5000))
   redirect('/journal')
 }
 
 export default async function NewUserPage() {
   await createNewUser()
   // this should never show
-  return <div>Loading...</div>
+  return <LoadingScreen />
 }
