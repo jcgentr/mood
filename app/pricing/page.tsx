@@ -7,14 +7,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { getUserByClerkID } from '@/utils/auth'
 import { cn } from '@/utils/cn'
 import { PLANS } from '@/utils/stripe'
+import { auth } from '@clerk/nextjs'
 import { ArrowRight, Check, HelpCircle, Minus } from 'lucide-react'
 import Link from 'next/link'
 
 export default async function PricingPage() {
-  const user = await getUserByClerkID()
+  const { userId } = auth()
 
   const pricingItems = [
     {
@@ -174,16 +174,16 @@ export default async function PricingPage() {
                 <div className="p-5">
                   {plan === 'Free' ? (
                     <Link
-                      href={user ? '/journal' : '/sign-in'}
+                      href={userId ? '/journal' : '/sign-in'}
                       className={buttonVariants({
                         className: 'w-full',
                         variant: 'secondary',
                       })}
                     >
-                      {user ? 'Upgrade now' : 'Sign up'}
+                      {userId ? 'Upgrade now' : 'Sign up'}
                       <ArrowRight className="h-5 w-5 ml-1.5" />
                     </Link>
-                  ) : user ? (
+                  ) : userId ? (
                     <UpgradeButton />
                   ) : (
                     <Link
@@ -192,7 +192,7 @@ export default async function PricingPage() {
                         className: 'w-full',
                       })}
                     >
-                      {user ? 'Upgrade now' : 'Sign up'}
+                      {userId ? 'Upgrade now' : 'Sign up'}
                       <ArrowRight className="h-5 w-5 ml-1.5" />
                     </Link>
                   )}
