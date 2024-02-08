@@ -2,6 +2,7 @@ import Link from 'next/link'
 import MaxWidthWrapper from './MaxWidthWrapper'
 import { ArrowRight, Smile } from 'lucide-react'
 import { buttonVariants } from './ui/button'
+import MobileNav from './MobileNav'
 
 export default function Navbar() {
   return (
@@ -12,7 +13,9 @@ export default function Navbar() {
             <Smile />
             <span className="ml-1">mood</span>
           </Link>
-          {/* TODO: add mobile navbar */}
+
+          <MobileNav isAuth={false} />
+
           <div className="hidden items-center space-x-4 sm:flex">
             <Link
               href="/pricing"

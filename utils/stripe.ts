@@ -45,6 +45,7 @@ export async function getUserSubscriptionPlan() {
       isSubscribed: false,
       isCanceled: false,
       stripeCurrentPeriodEnd: null,
+      user: null,
     }
   }
 
@@ -60,6 +61,7 @@ export async function getUserSubscriptionPlan() {
       isSubscribed: false,
       isCanceled: false,
       stripeCurrentPeriodEnd: null,
+      user: null,
     }
   }
 
@@ -88,5 +90,6 @@ export async function getUserSubscriptionPlan() {
     stripeCustomerId: dbUser.stripeCustomerId,
     isSubscribed,
     isCanceled,
+    user,
   }
 }

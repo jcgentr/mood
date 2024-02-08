@@ -5,13 +5,11 @@ import { cn } from '@/utils/cn'
 import Navbar from '@/components/Navbar'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Providers from '@/components/Providers'
+import { constructMetadata } from '@/utils/meta'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'mood',
-  description: 'A journal app with sentiment analysis.',
-}
+export const metadata = constructMetadata()
 
 export default function RootLayout({
   children,

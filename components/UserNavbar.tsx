@@ -5,6 +5,7 @@ import { buttonVariants } from './ui/button'
 import { UserButton } from '@clerk/nextjs'
 import { getUserSubscriptionPlan } from '@/utils/stripe'
 import { cn } from '@/utils/cn'
+import MobileNav from './MobileNav'
 
 export default async function UserNavbar() {
   const subscriptionPlan = await getUserSubscriptionPlan()
@@ -17,7 +18,9 @@ export default async function UserNavbar() {
             <Smile />
             <span className="ml-1">mood</span>
           </Link>
-          {/* TODO: add mobile navbar */}
+
+          <MobileNav isAuth={!!subscriptionPlan.user} />
+
           <div className="hidden items-center space-x-4 sm:flex">
             <Link
               href="/journal"
