@@ -75,6 +75,7 @@ export const qa = async (question: string, entries: PickedJournalEntry[]) => {
   const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' })
   const chain = loadQARefineChain(model)
   const embeddings = new OpenAIEmbeddings()
+  // in-memory vector db from langchain
   const store = await MemoryVectorStore.fromDocuments(docs, embeddings)
   const relevantDocs = await store.similaritySearch(question)
   const res = await chain.call({

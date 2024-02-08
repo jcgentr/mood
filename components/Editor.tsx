@@ -4,7 +4,7 @@ import { updateEntry } from '@/utils/api'
 import { useState } from 'react'
 import { useAutosave } from 'react-autosave'
 import { Textarea } from './ui/textarea'
-import ChatWrapper from './ChatWrapper'
+import ChatWrapper from './chat/ChatWrapper'
 
 export default function Editor({ entry }: { entry: any }) {
   const [value, setValue] = useState(entry.content)
@@ -65,7 +65,7 @@ export default function Editor({ entry }: { entry: any }) {
               ))}
             </ul>
           </div>
-          <ChatWrapper />
+          <ChatWrapper journalEntryId={entry.id} />
         </div>
       </div>
     </div>
